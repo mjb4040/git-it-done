@@ -9,4 +9,20 @@ var getUserRepos = function(user) {
     });
   };
   
-  getUserRepos("facebook");
+  var userFormEl = document.querySelector("#user-form");
+  var nameInputEl = document.querySelector("#username");
+
+  var formSubmitHandler = function(event) {
+    event.preventDefault();
+    var username = nameInputEl.value.trim();
+
+    if (username) {
+      getUserRepos(username);
+      nameInputEl.value=" ";
+    } else {
+      alert("Please enter a GitHub username");
+    }
+  };
+  
+  userFormEl.addEventListener("submit", formSubmitHandler);
+
